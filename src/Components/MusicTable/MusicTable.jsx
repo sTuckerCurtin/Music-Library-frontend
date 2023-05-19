@@ -17,7 +17,14 @@ const MusicTable = (props) => {
   function handleSearch(searchTerm){
     const filteredSongs = songs.filter((song) => song.title.includes(searchTerm) || 
     song.artist.includes(searchTerm) || 
-    song.album.includes(searchTerm));
+    song.album.includes(searchTerm)||
+    song.genre.includes(searchTerm)||
+    song.release_date.toString().includes(searchTerm)||
+    song.running_time.toString().includes(searchTerm) ||
+    song.release_date === parseInt(searchTerm)||
+    song.running_time === parseInt(searchTerm));
+
+    console.log('Filtered songs:', filteredSongs);
 
     setFilteredSongs(filteredSongs)
   }

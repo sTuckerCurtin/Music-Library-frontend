@@ -3,23 +3,41 @@ import axios from 'axios';
 import MusicTable from './Components/MusicTable/MusicTable';
 import Header from './Components/Header/Header';
 import AddNewSongForm from './Components/NewSong/newSong';
+import "./App.css"
 
 
 function App(props) {
   const [songs, setSongs] = useState([]);
 
-  function handleSongAdded(newSong) {
-    setSongs(prevSongs => [...prevSongs, newSong]);
+  async function fetchSongs(){
+    const response = await axios.get('http://127.0.0.1:5000/api/songs')
+    setSongs(response.data.songs);
+    
   }
+  useEffect(() =>{fetchSongs()}, []);
   
+
+
+
 
   return (
     <div>
-      <Header/>
-      <AddNewSongForm onSongAdded={handleSongAdded}/>
-      <MusicTable songs={songs}/>
+      <Header />
+      <section>
+        <div className='container-fluid'>
+          <div className='row'>
+            <div className='col-md-6'>
+              <MusicTable songs={songs} />
+            </div>
+            <div className='col-md-6'>
+              <AddNewSongForm onSongAdded={fetchSongs} />
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
-
+  
+  
 export default App;

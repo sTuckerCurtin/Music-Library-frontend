@@ -1,0 +1,12 @@
+.box {
+  width: 200px;
+  height: 200px;
+  position: relative;
+  background-color: #eaeaea;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  width: 598px;
+  top: -236px;
+  overflow: hidden;
+}

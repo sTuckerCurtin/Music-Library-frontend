@@ -43,6 +43,7 @@ const AddNewSongForm = ({ onSongAdded }) => {
     <section className='bg'>
     <div>
       <form onSubmit={handleSubmit}>
+        <h3>Add Song</h3>
         <div className="mb-3">
           <label htmlFor="songTitle" className="form-label">Song Title</label>
           <input
